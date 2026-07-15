@@ -56,7 +56,7 @@
   .occurrences { display: none; padding: 0 4px 14px; }
   .topic.open .occurrences { display: block; }
   .occ {
-    display: flex; gap: 12px; padding: 10px 0 10px 10px;
+    display: flex; gap: 6px; padding: 10px 0 10px 10px;
     border-left: 2px solid var(--line); margin-left: 4px;
   }
   .occ-date { flex-shrink: 0; width: 64px; font-size: 12px; font-weight: 600; color: var(--purple); padding-top: 2px; }
@@ -66,11 +66,12 @@
     background: var(--purple); padding: 3px 10px; border-radius: 999px;
     text-decoration: none; margin-bottom: 6px;
   }
-  .note { font-size: 13px; line-height: 1.45; margin-top: 4px; color: var(--ink); }
+  .note { display: flex; gap: 8px; font-size: 13px; line-height: 1.45; margin-top: 9px; color: var(--ink); }
   .note .ts {
-    display: inline-block; font-size: 11px; font-weight: 700; color: var(--purple-dark);
-    background: var(--purple-light-bg); border-radius: 4px; padding: 1px 6px; margin-right: 6px;
+    flex-shrink: 0; display: inline-block; font-size: 11px; font-weight: 700; color: var(--purple-dark);
+    background: var(--purple-light-bg); border-radius: 4px; padding: 1px 6px; height: fit-content; margin-top: 1px;
   }
+  .note .ts.ts-blank { background: transparent; padding: 1px 3px; }
   .empty { padding: 40px 4px; text-align: center; color: var(--muted); font-size: 14px; }
   .note-hit { background: #fff4d6; }
   .note a { color: var(--accent); }
@@ -152,8 +153,8 @@ function render(q) {
 
     const occHtml = t.occurrences.map(o => {
       const notesHtml = o.notes.map(n => {
-        const tsHtml = n.timestamp ? '<span class="ts">' + escapeHtml(n.timestamp) + '</span>' : '';
-        return '<div class="note">' + tsHtml + highlight(n.text, query) + '</div>';
+        const tsHtml = n.timestamp ? '<span class="ts">' + escapeHtml(n.timestamp) + '</span>' : '<span class="ts ts-blank"></span>';
+        return '<div class="note">' + tsHtml + '<span>' + highlight(n.text, query) + '</span></div>';
       }).join('');
       return `
         <div class="occ">
