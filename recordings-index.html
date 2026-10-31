@@ -75,6 +75,8 @@
   .empty { padding: 40px 4px; text-align: center; color: var(--muted); font-size: 14px; }
   .note-hit { background: #fff4d6; }
   .note a { color: var(--accent); }
+  .mobile-note { display: none; background: #f6ecf5; border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 1.55; color: #4f2a4c; margin: 0 0 18px; }
+  @media (hover: none) and (pointer: coarse) { .mobile-note { display: block; } }
 </style>
 </head>
 <body>
@@ -82,7 +84,8 @@
 <div class="wrap">
   <h1>Recordings Index</h1>
   <p class="subtitle">Find your topic or search by keyword. Note the time-stamp to locate your topic within the video.</p>
-  <p class="scope-note">Covers sessions from 2/15/24–10/3/24 and 9/4/25–present. Recordings outside that range are still available, just not indexed here — see the Recordings section. Time-stamps are approximate.</p>
+  <p class="scope-note">Not every session is indexed here. You'll find all recordings in the Recordings section. Time-stamps are approximate.</p>
+  <div class="mobile-note"><strong>Viewing on the mobile app?</strong> After tapping Watch, the video area may look blank. Scroll down to find the play button, then tap the full-screen icon for the best view.</div>
 
   <div class="search-row">
     <input type="text" id="search" placeholder="Search topics or keywords… e.g. addiction, APP, grief">
